@@ -4,6 +4,8 @@ import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-d
 dotenv.config()
 // Cors
 import cors from 'cors'
+// Router 
+import router from './routes/index.router.js';
 
 const app = express()
 const port = process.env.PORT
@@ -23,3 +25,6 @@ app.listen(port, () => {
 app.get('/', (req, res) => {
     res.send('Hello world')
 })
+import './utils/auth/index.js';
+
+app.use('/', router);
