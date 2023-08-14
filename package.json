@@ -1,0 +1,11 @@
+{
+  "name": "energysolution",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Juan Cabana & Alexander Chiquito <juand.cabanat@unac.ecu.co & alexander.ramirezc@unac.edu.co>",
+  "license": "MIT"
+}
