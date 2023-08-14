@@ -17,9 +17,9 @@ const sequelize = new Sequelize('energysolution', 'dbadmin', 'Password123', {
   logging: true,
 });
 setupModels(sequelize);
-// sequelize.sync(
-//   // {force: true}
-//   );
+sequelize.sync(
+  // {force: true}
+  );
 
 
 // module.exports = sequelize;

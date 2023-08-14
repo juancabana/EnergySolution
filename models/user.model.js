@@ -9,25 +9,17 @@ export const UserSchema = {
     primaryKey: true,
     type: DataTypes.INTEGER,
   },
-  role: {
-    allowNull: false,
-    type: DataTypes.STRING,
-    defaultValue: 'user',
-  },
-  first_name_user: {
+  name: {
     allowNull: false,
     type: DataTypes.STRING,
   },
-  last_name_user: {
-    defaultValue: null,
-    type: DataTypes.STRING,
-  },
+
   email: {
     allowNull: false,
     unique: true,
     type: DataTypes.STRING,
   },
-  password_user: {
+  password: {
     allowNull: false,
     type: DataTypes.STRING,
   },
@@ -35,13 +27,13 @@ export const UserSchema = {
     allowNull: true,
     type: DataTypes.STRING,
   },
-  image_user: {
+  image: {
     type: DataTypes.STRING,
     defaultValue: null,
   },
   phone_number: {
     allowNull: false,
-    type: DataTypes.INTEGER,
+    type: DataTypes.STRING,
   },
 };
 

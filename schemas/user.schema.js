@@ -1,7 +1,7 @@
 import joi from 'joi';
 
 const id = joi.number().id();
-const name = joi.string().alphanum().min(3).max(15);
+const name = joi.string().min(3).max(15);
 const email = joi.string().email();
 const password = joi.string().min(5);
 const image = joi.string().allow(null).allow('');
