@@ -4,7 +4,6 @@ export const USER_TABLE = 'User';
 
 export const UserSchema = {
   id: {
-    allowNull: false,
     autoIncrement: true,
     primaryKey: true,
     type: DataTypes.INTEGER,
@@ -56,6 +55,14 @@ export const UserSchema = {
 
 export class User extends Model {
   // Relaciones
+  static associate(models) {
+    // User has many dayli consuption model
+    // ForeignKey in DailyConsumption
+    this.hasMany(models.DailyConsumption, {
+      as: 'DailyConsumption',
+      foreignKey: 'UserId',
+    });
+  }
 
   static config(sequelize) {
     return {
