@@ -10,11 +10,15 @@ export const DailyConsumptionSchema = {
     autoIncrement: true,
   },
   date: {
-    type: DataTypes.DATEONLY,
+    type: DataTypes.DATE,
     allowNull: false,
   },
   kWhConsumed: {
     type: DataTypes.FLOAT,
+    allowNull: false,
+  },
+  UserId: {
+    type: DataTypes.INTEGER,
     allowNull: false,
   },
 };
