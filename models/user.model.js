@@ -35,6 +35,23 @@ export const UserSchema = {
     allowNull: false,
     type: DataTypes.STRING,
   },
+  area: {
+    allowNull: false,
+    type: DataTypes.DOUBLE,
+  },
+  floors: {
+    allowNull: false,
+    type: DataTypes.DOUBLE,
+  },
+  rooms: {
+    allowNull: false,
+    type: DataTypes.INTEGER,
+  },
+  appliances: {
+    allowNull: false,
+    type: DataTypes.INTEGER,
+  },
+
 };
 
 export class User extends Model {

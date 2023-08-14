@@ -5,6 +5,22 @@ import bcrypt from 'bcrypt';
 class UserService {
   constructor() {}
 
+  async find() {
+    const users = await sequelize.models.User.findAll({
+      attributes: [
+        'id',
+        'name',
+        'email',
+        'image',
+        'phone_number',
+        'area',
+        'floors',
+        'rooms',
+        'appliances',
+      ]
+    });
+    return users;
+  }
   async findOne(id) {
     const user = await sequelize.models.User.findByPk(id);
     if (!user) {

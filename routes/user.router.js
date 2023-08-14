@@ -7,6 +7,22 @@ import passport from 'passport';
 const router = expres.Router();
 const service = new UserServices();
 
+// GET
+// Obtener todos los usuarios
+router.get(
+  '/',
+  // Protección de ruta contra los no autenticados
+  passport.authenticate('jwt', { session: false }),
+  // Verificar rol del usuario
+  async (req, res, next) => {
+    try {
+      const users = await service.find();
+      res.json({ ...users });
+    } catch (err) {
+      next(err);
+    }
+  }
+);
 
 // Obtener un usuario por id
 router.get(
