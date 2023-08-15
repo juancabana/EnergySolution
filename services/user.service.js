@@ -1,11 +1,11 @@
 import sequelize from "./../libs/sequelize.js";
 import boom from "@hapi/boom";
 import bcrypt from "bcrypt";
-import * as dotenv from 'dotenv'
-import nodemailer from 'nodemailer'
-import {html} from './../assets/register.js'
+import * as dotenv from "dotenv";
+import nodemailer from "nodemailer";
+import { html } from "./../assets/register.js";
 
-dotenv.config()
+dotenv.config();
 const passwordMailer = process.env.APP_PASSWORD;
 const userMailer = process.env.USER_MAILER;
 
@@ -50,10 +50,10 @@ class UserService {
       password: hash,
     });
     delete newUser.dataValues.password;
-    const mail = await this.sendMail(newUser)
-    if(mail) {
-      return { ...newUser, message: 'Mail send'};
-    } 
+    const mail = await this.sendMail(newUser);
+    if (mail) {
+      return { ...newUser, message: "Mail send" };
+    }
   }
 
   async delete(id) {
@@ -97,8 +97,7 @@ class UserService {
   //   const rta = await this.sendMail(mail);
   //   return rta;
   // }
-    async sendMail(user) {
-      
+  async sendMail(user) {
     // create reusable transporter object using the default SMTP transport
     const transporter = nodemailer.createTransport({
       host: "smtp.gmail.com",
@@ -106,19 +105,19 @@ class UserService {
       secure: true,
       auth: {
         user: userMailer,
-        pass: passwordMailer
-      }
+        pass: passwordMailer,
+      },
     });
 
-      // send mail with defined transport object
-  const info = await transporter.sendMail({
-    from: '"Energy Solution 🖥️💡" <foo@example.com>', // sender address
-    to: user.email, // list of receivers
-    subject: "!!FELICIDADES!! 🙌🥳", // Subject line
-    text: "Hello world?", // plain text body
-    html: html, // html body
-  });
-  return info
+    // send mail with defined transport object
+    const info = await transporter.sendMail({
+      from: '"Energy Solution 🖥️💡" <foo@example.com>', // sender address
+      to: user.email, // list of receivers
+      subject: "!!FELICIDADES!! 🙌🥳", // Subject line
+      text: "Hello world?", // plain text body
+      html: html, // html body
+    });
+    return info;
   }
 }
 

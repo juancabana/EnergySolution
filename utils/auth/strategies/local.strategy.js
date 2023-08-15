@@ -1,7 +1,5 @@
-import boom from '@hapi/boom';
 import { Strategy } from 'passport-local';
 import AuthService from './../../../services/auth.service.js';
-import bcrypt from 'bcrypt';
 
 const service = new AuthService();
 

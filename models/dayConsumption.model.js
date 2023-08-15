@@ -1,7 +1,6 @@
-import { Model, DataTypes } from 'sequelize';
+import { Model, DataTypes } from "sequelize";
 
-export const DAY_TABLE = 'DayConsumption';
-
+export const DAY_TABLE = "DayConsumption";
 
 export const DayConsumptionSchema = {
   id: {
@@ -24,27 +23,24 @@ export const DayConsumptionSchema = {
   },
 };
 
-
 export class DayConsumption extends Model {
   // Relaciones
   static associate(models) {
-   // DayConsumption has belogs to one User
+    // DayConsumption has belogs to one User
     // ForeignKey here
     this.belongsTo(models.User, {
-      as: 'owner',
-      foreignKey: 'UserId',
+      as: "owner",
+      foreignKey: "UserId",
     });
-  }3
+  }
+  3;
 
   static config(sequelize) {
     return {
       sequelize,
       tableName: DAY_TABLE,
-      modelName: 'DayConsumption',
+      modelName: "DayConsumption",
       timestamps: false,
     };
   }
 }
-
-
-

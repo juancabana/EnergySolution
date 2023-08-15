@@ -1,7 +1,6 @@
-import { Model, DataTypes } from 'sequelize';
+import { Model, DataTypes } from "sequelize";
 
-export const HOUR_TABLE = 'HourConsumption';
-
+export const HOUR_TABLE = "HourConsumption";
 
 export const HourConsumptionSchema = {
   id: {
@@ -24,15 +23,14 @@ export const HourConsumptionSchema = {
   },
 };
 
-
 export class HourConsumption extends Model {
   // Relaciones
   static associate(models) {
-   // HourConsumption has belogs to one User
+    // HourConsumption has belogs to one User
     // ForeignKey here
     this.belongsTo(models.User, {
-      as: 'owner',
-      foreignKey: 'UserId',
+      as: "owner",
+      foreignKey: "UserId",
     });
   }
 
@@ -40,11 +38,8 @@ export class HourConsumption extends Model {
     return {
       sequelize,
       tableName: HOUR_TABLE,
-      modelName: 'HourConsumption',
+      modelName: "HourConsumption",
       timestamps: false,
     };
   }
 }
-
-
-

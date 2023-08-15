@@ -1,4 +1,4 @@
-import boom from '@hapi/boom';
+import boom from "@hapi/boom";
 
 // Middleware dinamic for status code
 const validatorHandler = (schema, property) => {

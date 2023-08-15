@@ -1,6 +1,6 @@
-import { Model, DataTypes } from 'sequelize';
+import { Model, DataTypes } from "sequelize";
 
-export const USER_TABLE = 'User';
+export const USER_TABLE = "User";
 
 export const UserSchema = {
   id: {
@@ -70,8 +70,8 @@ export class User extends Model {
     // User has many dayli consumption model
     // ForeignKey in HourConsumption
     this.hasMany(models.HourConsumption, {
-      as: 'HourConsumption',
-      foreignKey: 'UserId',
+      as: "HourConsumption",
+      foreignKey: "UserId",
     });
   }
 
@@ -79,7 +79,7 @@ export class User extends Model {
     return {
       sequelize,
       tableName: USER_TABLE,
-      modelName: 'User',
+      modelName: "User",
       timestamps: false,
     };
   }

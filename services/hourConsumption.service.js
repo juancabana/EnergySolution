@@ -1,4 +1,4 @@
-import sequelize from '../libs/sequelize.js';
+import sequelize from "../libs/sequelize.js";
 
 class UserService {
   constructor() {}
@@ -7,7 +7,6 @@ class UserService {
     const newConsumption = await sequelize.models.HourConsumption.create(data);
     return newConsumption;
   }
-
 }
 
 export default UserService;

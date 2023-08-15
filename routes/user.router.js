@@ -1,8 +1,11 @@
-import expres from 'express';
-import UserServices from './../services/user.service.js';
-import validatorHandler from './../middlewares/validator.handler.js';
-import {createUserSchema,  getAndDeleteUserSchema} from './../schemas/user.schema.js';
-import passport from 'passport';
+import expres from "express";
+import UserServices from "./../services/user.service.js";
+import validatorHandler from "./../middlewares/validator.handler.js";
+import {
+  createUserSchema,
+  getAndDeleteUserSchema,
+} from "./../schemas/user.schema.js";
+import passport from "passport";
 
 const router = expres.Router();
 const service = new UserServices();
@@ -10,9 +13,9 @@ const service = new UserServices();
 // GET
 // Obtener todos los usuarios
 router.get(
-  '/',
+  "/",
   // Protección de ruta contra los no autenticados
-  passport.authenticate('jwt', { session: false }),
+  passport.authenticate("jwt", { session: false }),
   async (req, res, next) => {
     try {
       const users = await service.find();
@@ -25,10 +28,10 @@ router.get(
 
 // Obtener un usuario por id
 router.get(
-  '/:id',
+  "/:id",
   // Protección de ruta contra los no autenticados
-  passport.authenticate('jwt', { session: false }),
-  validatorHandler(getAndDeleteUserSchema, 'params'),
+  passport.authenticate("jwt", { session: false }),
+  validatorHandler(getAndDeleteUserSchema, "params"),
   async (req, res, next) => {
     const { id } = req.params;
     try {
@@ -43,10 +46,10 @@ router.get(
 // POST
 // Crear nuevo usuario
 router.post(
-  '/',
+  "/",
   // Protección de ruta a contra los no autenticados
-  passport.authenticate('jwt', { session: false }),
-  validatorHandler(createUserSchema, 'body'),
+  passport.authenticate("jwt", { session: false }),
+  validatorHandler(createUserSchema, "body"),
   async (req, res, next) => {
     const body = req.body;
     try {
@@ -60,10 +63,10 @@ router.post(
 
 // DELETE
 router.delete(
-  '/:id',
+  "/:id",
   // Protección de ruta contra los no autenticados
-  passport.authenticate('jwt', { session: false }),
-  validatorHandler(getAndDeleteUserSchema, 'params'),
+  passport.authenticate("jwt", { session: false }),
+  validatorHandler(getAndDeleteUserSchema, "params"),
   async (req, res, next) => {
     const { id } = req.params;
     try {
@@ -80,10 +83,10 @@ router.delete(
 // POST
 // Crear preferencias del usuario
 router.put(
-  '/preferences/:id',
+  "/preferences/:id",
   // Protección de ruta a contra los no autenticados
-  passport.authenticate('jwt', { session: false }),
-  validatorHandler(createUserSchema, 'body'),
+  passport.authenticate("jwt", { session: false }),
+  validatorHandler(createUserSchema, "body"),
   async (req, res, next) => {
     const { id } = req.params;
     const body = req.body;
