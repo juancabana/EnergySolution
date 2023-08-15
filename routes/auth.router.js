@@ -20,32 +20,6 @@ router.post(
       next(error);
     }
   }
-);
-
-// // Recuperation email
-// router.post('/recovery',
-// validatorHandler(recoverySchema, 'body'),
-// async (req, res, next) => {
-//   try {
-//     const { email } = req.body;
-//     const rta = await service.sendRecovery(email);
-//     res.json(rta);
-//   } catch (error) {
-//     next(error);
-//   }
-// });
-
-// // Change password
-// router.post('/change-password',
-// validatorHandler(changePasswordSchema, 'body'),
-// async (req, res, next) => {
-//   try {
-//     const { token, newPassword } = req.body;
-//     const rta = service.changePassword(token, newPassword);
-//     res.json(rta);
-//   } catch (error) {
-//     next(error);
-//   }
-// });
+);  
 
 export default router;

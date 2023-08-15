@@ -54,7 +54,7 @@ export const UserSchema = {
     allowNull: true,
     type: DataTypes.STRING,
   },
-  kWConsumedMonth: {
+  kWhConsumedMonth: {
     allowNull: true,
     type: DataTypes.STRING,
   },

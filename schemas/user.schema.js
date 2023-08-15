@@ -11,7 +11,7 @@ const floors = joi.number().integer().positive();
 const rooms = joi.number().integer().positive();
 const appliances = joi.number().integer().positive();
 const monthlyReceipt = joi.number().positive();
-const kWConsumedMonth = joi.number().positive();
+const kWhConsumedMonth = joi.number().positive();
 const desiredConsumption = joi.number().positive();
 
 export const createUserSchema = joi.object({
@@ -36,7 +36,7 @@ export const updateUserSchema = joi.object({
 });
 export const userUpdatePreferences = joi.object({
   monthlyReceipt: monthlyReceipt.required(),
-  kWConsumedMonth: kWConsumedMonth.required(),
+  kWhConsumedMonth: kWhConsumedMonth.required(),
   desiredConsumption: desiredConsumption.required(),
 });
 

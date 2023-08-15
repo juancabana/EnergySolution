@@ -52,7 +52,7 @@ class UserService {
     delete newUser.dataValues.password;
     const mail = await this.sendMail(newUser);
     if (mail) {
-      return { ...newUser, message: "Mail send" };
+      return { ...newUser.dataValues, message: "Mail send" };
     }
   }
 
@@ -71,7 +71,7 @@ class UserService {
     }
     await user.update({
       monthlyReceipt: data.monthlyReceipt,
-      kWConsumedMonth: data.kWConsumedMonth,
+      kWhConsumedMonth: data.kWhConsumedMonth,
       desiredConsumption: data.desiredConsumption,
     });
     return { message: "EL usuario se ha actualizado correctamente", ...user };
