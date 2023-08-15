@@ -5,10 +5,10 @@ const date = joi.date();
 const UserId = joi.number().integer().positive();
 const kWhConsumed = joi.number().positive();
 
-export const createHourConsumption = joi.object({
+export const createConsumption = joi.object({
     date: date.required(),
     kWhConsumed: kWhConsumed.required(),
     UserId: UserId.required(),
 });
 
-export const getHourConsumption = joi.object({ id: id.required() });
+export const getConsumption = joi.object({ id: id.required() });
