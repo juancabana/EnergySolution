@@ -1,11 +1,18 @@
 import express from "express";
 // Cors
 import cors from 'cors'
+// Middlewares 
+import {
+    errorHandler,
+    logErrors,
+    boomErrorHandler,
+  } from './middlewares/error.handler.js';
 // Router 
 import router from './routes/index.router.js';
 // Environment variables 
 import * as dotenv from 'dotenv'
 import {dailyScheduledTasks} from './utils/scheduledFunctions/index.js'
+
 
 
 dotenv.config()
@@ -28,3 +35,6 @@ app.listen(port, () => {
 
 import './utils/auth/index.js';
 app.use('/', router);
+app.use(logErrors);
+app.use(boomErrorHandler);
+app.use(errorHandler);

@@ -13,7 +13,6 @@ router.get(
   '/',
   // Protección de ruta contra los no autenticados
   passport.authenticate('jwt', { session: false }),
-  // Verificar rol del usuario
   async (req, res, next) => {
     try {
       const users = await service.find();
@@ -29,7 +28,6 @@ router.get(
   '/:id',
   // Protección de ruta contra los no autenticados
   passport.authenticate('jwt', { session: false }),
-  // Verificar rol del usuario
   validatorHandler(getAndDeleteUserSchema, 'params'),
   async (req, res, next) => {
     const { id } = req.params;
@@ -48,7 +46,6 @@ router.post(
   '/',
   // Protección de ruta a contra los no autenticados
   passport.authenticate('jwt', { session: false }),
-  // Verificar rol del usuario
   validatorHandler(createUserSchema, 'body'),
   async (req, res, next) => {
     const body = req.body;
@@ -66,7 +63,6 @@ router.delete(
   '/:id',
   // Protección de ruta contra los no autenticados
   passport.authenticate('jwt', { session: false }),
-  // Verificar rol del usuario
   validatorHandler(getAndDeleteUserSchema, 'params'),
   async (req, res, next) => {
     const { id } = req.params;
@@ -75,6 +71,25 @@ router.delete(
       res.json({
         rta,
       });
+    } catch (err) {
+      next(err);
+    }
+  }
+);
+
+// POST
+// Crear preferencias del usuario
+router.put(
+  '/preferences/:id',
+  // Protección de ruta a contra los no autenticados
+  passport.authenticate('jwt', { session: false }),
+  validatorHandler(createUserSchema, 'body'),
+  async (req, res, next) => {
+    const { id } = req.params;
+    const body = req.body;
+    try {
+      const newUser = await service.updatePreferences(id, body);
+      res.json(newUser);
     } catch (err) {
       next(err);
     }

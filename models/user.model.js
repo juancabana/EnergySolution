@@ -50,7 +50,18 @@ export const UserSchema = {
     allowNull: false,
     type: DataTypes.INTEGER,
   },
-
+  monthlyReceipt: {
+    allowNull: true,
+    type: DataTypes.STRING,
+  },
+  kWConsumedMonth: {
+    allowNull: true,
+    type: DataTypes.STRING,
+  },
+  desiredConsumption: {
+    allowNull: true,
+    type: DataTypes.STRING,
+  },
 };
 
 export class User extends Model {
