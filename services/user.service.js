@@ -33,7 +33,6 @@ class UserService {
     const user = await sequelize.models.User.findOne({
       where: { email: email },
     });
-
     return user;
   }
 
@@ -46,12 +45,7 @@ class UserService {
     delete newUser.dataValues.password;
     return newUser;
   }
-  // async update(id, changes) {
-  //   const user = await this.findOne(id);
-  //   const rta = await user.update(changes);
-  //   console.log(rta)
-  //   return rta
-  // }
+
   async delete(id) {
     const user = await sequelize.models.User.findByPk(id);
     if (!user) {

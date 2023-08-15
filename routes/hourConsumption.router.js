@@ -1,8 +1,8 @@
 import expres from 'express';
-import HourConsumption from './../services/hourConsuption.service.js';
+import HourConsumption from './../services/hourConsumption.service.js';
 import User from '../services/user.service.js';
 import validatorHandler from '../middlewares/validator.handler.js';
-import {createHourConsuption,  getHourConsuption} from '../schemas/hourConsumption.schema.js';
+import {createHourConsumption,  getHourConsumption} from '../schemas/hourConsumption.schema.js';
 import passport from 'passport';
 
 const router = expres.Router();
@@ -18,7 +18,7 @@ router.post(
     // Protección de ruta a contra los no autenticados
     passport.authenticate('jwt', { session: false }),
     
-    validatorHandler(createHourConsuption, 'body'),
+    validatorHandler(createHourConsumption, 'body'),
     async (req, res, next) => {
       const { id } = req.params;
       const consumptionData = {...req.body, UserId: parseInt(id)};

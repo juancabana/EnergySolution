@@ -11,6 +11,7 @@ export const HourConsumptionSchema = {
   },
   date: {
     type: DataTypes.DATE,
+    unique: true,
     allowNull: false,
   },
   kWhConsumed: {

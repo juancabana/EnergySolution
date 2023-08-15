@@ -7,6 +7,6 @@ const router = expres.Router();
 
 router.use('/auth/', authRouter);
 router.use('/user/', userRouter);
-router.use('/hour-consuption/', hourConsumptionRouter);
+router.use('/hour-consumption/', hourConsumptionRouter);
 
 export default router

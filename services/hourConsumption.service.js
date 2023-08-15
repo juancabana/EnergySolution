@@ -4,8 +4,8 @@ class UserService {
   constructor() {}
 
   async create(data) {
-    const newConsuption = await sequelize.models.HourConsumption.create(data);
-    return newConsuption;
+    const newConsumption = await sequelize.models.HourConsumption.create(data);
+    return newConsumption;
   }
 
 }

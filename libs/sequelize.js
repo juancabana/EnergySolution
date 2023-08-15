@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize';
 import { setupModels } from './../models/index.js';
-import * as dotenv from 'dotenv' 
+import * as dotenv from 'dotenv'
 dotenv.config()
 
 const DB_USER = process.env.DB_USER;

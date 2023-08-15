@@ -56,7 +56,7 @@ export const UserSchema = {
 export class User extends Model {
   // Relaciones
   static associate(models) {
-    // User has many dayli consuption model
+    // User has many dayli consumption model
     // ForeignKey in HourConsumption
     this.hasMany(models.HourConsumption, {
       as: 'HourConsumption',
