@@ -1,9 +1,9 @@
 import { Model, DataTypes } from 'sequelize';
 
-export const DAILY_TABLE = 'DailyConsumption';
+export const HOUR_TABLE = 'HourConsumption';
 
 
-export const DailyConsumptionSchema = {
+export const HourConsumptionSchema = {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -24,10 +24,10 @@ export const DailyConsumptionSchema = {
 };
 
 
-export class DailyConsumption extends Model {
+export class HourConsumption extends Model {
   // Relaciones
   static associate(models) {
-   // DailyConsumption has belogs to one User
+   // HourConsumption has belogs to one User
     // ForeignKey here
     this.belongsTo(models.User, {
       as: 'owner',
@@ -38,8 +38,8 @@ export class DailyConsumption extends Model {
   static config(sequelize) {
     return {
       sequelize,
-      tableName: DAILY_TABLE,
-      modelName: 'DailyConsumption',
+      tableName: HOUR_TABLE,
+      modelName: 'HourConsumption',
       timestamps: false,
     };
   }

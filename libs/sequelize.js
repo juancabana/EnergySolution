@@ -1,6 +1,6 @@
 import { Sequelize } from 'sequelize';
 import { setupModels } from './../models/index.js';
-import * as dotenv from 'dotenv' // see https://github.com/motdotla/dotenv#how-do-i-use-dotenv-with-import
+import * as dotenv from 'dotenv' 
 dotenv.config()
 
 const DB_USER = process.env.DB_USER;
@@ -20,5 +20,4 @@ sequelize.sync(
   );
 
 
-// module.exports = sequelize;
 export default sequelize;

@@ -2,10 +2,12 @@ import UserServices from './user.service.js';
 import boom from '@hapi/boom';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
-import config from '../config/config.js';
-// import nodemailer from 'nodemailer';
+import * as dotenv from 'dotenv' 
+
+dotenv.config()
 
 const service = new UserServices();
+const jwtSecret = process.env.JWT_SECRET;
 
 class AuthService {
   constructor() {}
@@ -30,7 +32,7 @@ class AuthService {
   //   }
   //   const payload = { sub: user.id };
   //   // Generar jwt
-  //   const token = jwt.sign(payload, config.jwtSecret, { expiresIn: '15min' });
+  //   const token = jwt.sign(payload, jwtSecret, { expiresIn: '15min' });
   //   const link = `http://myfrontend.com/recovery?token=${token}`;
   //   await service.update(user.id, { recovery_token: token });
   //   const mail = {
@@ -50,7 +52,7 @@ class AuthService {
       role: user.role,
     };
     // Generar jwt
-    const token = jwt.sign(payload, config.jwtSecret);
+    const token = jwt.sign(payload, jwtSecret);
     return {
       user,
       token,
@@ -59,7 +61,7 @@ class AuthService {
 
   // async changePassword(token, newPassword) {
   //   try {
-  //     const payload = jwt.verify(token, config.jwtSecret);
+  //     const payload = jwt.verify(token, jwtSecret);
   //     const user = await service.findOne(payload.sub);
   //     // console.log(payload)
   //     if (user.recovery_token !== token) {
