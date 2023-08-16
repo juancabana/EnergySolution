@@ -10,8 +10,8 @@ import passport from "passport";
 const router = expres.Router();
 const service = new UserServices();
 
-// GET
 // Obtener todos los usuarios
+
 router.get(
   "/",
   // Protección de ruta contra los no autenticados
@@ -45,6 +45,33 @@ router.get(
 
 // POST
 // Crear nuevo usuario
+/**
+ * @swagger
+ * tags:
+ *   name: User
+ *   description: Create new user
+ * security:
+ *   - bearerAuth: []
+ * /user:
+ *   post:
+ *     summary: Create a new user
+ *     tags: [User]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/User'
+ *     responses:
+ *       200:
+ *         description: The created user.
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/User'
+ * 
+ *
+ */
 router.post(
   "/",
   // Protección de ruta a contra los no autenticados

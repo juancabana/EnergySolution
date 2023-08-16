@@ -9,6 +9,10 @@ import {
 } from "./middlewares/error.handler.js";
 // Router
 import router from "./routes/index.router.js";
+import path from "path";
+// Swagger
+import swagerUI from "swagger-ui-express";
+import swaggerJsdoc from "swagger-jsdoc";
 // Environment variables
 import * as dotenv from "dotenv";
 import { dailyScheduledTasks } from "./utils/scheduledFunctions/index.js";
@@ -17,6 +21,26 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT;
+
+const options = {
+  definition: {
+    openapi: "3.1.0",
+    info: {
+      title: "Energy Solution",
+      version: "0.1.0",
+      description:
+        "This is an API made for energy solutions",
+    },
+    servers: [
+      {
+        url: "http://localhost:3005",
+      },
+    ],
+  },
+  apis: ["./routes/*.js"],
+  
+};
+const specs = swaggerJsdoc(options);
 
 // dailyScheduledTasks();
 
@@ -30,8 +54,16 @@ app.listen(port, () => {
   console.log(`App running at port http://localhost:${port}`);
 });
 
+// Middlewares
 import "./utils/auth/index.js";
+
 app.use("/", router);
 app.use(logErrors);
 app.use(boomErrorHandler);
 app.use(errorHandler);
+
+app.use(
+  "/api-doc",
+  swagerUI.serve,
+  swagerUI.setup(specs, { explorer: true })
+);

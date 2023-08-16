@@ -3,10 +3,7 @@ import {
   HourConsumptionSchema,
   HourConsumption,
 } from "./hourConsumption.model.js";
-import {
-  DayConsumptionSchema,
-  DayConsumption,
-} from "./dayConsumption.model.js";
+
 
 // Se ejecutan todas las relaciones y se inicializa cada esquema
 export function setupModels(sequelize) {
@@ -15,9 +12,7 @@ export function setupModels(sequelize) {
     HourConsumptionSchema,
     HourConsumption.config(sequelize)
   );
-  DayConsumption.init(DayConsumptionSchema, DayConsumption.config(sequelize));
 
   User.associate(sequelize.models);
   HourConsumption.associate(sequelize.models);
-  DayConsumption.associate(sequelize.models);
 }

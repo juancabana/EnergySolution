@@ -10,8 +10,8 @@ const DB_NAME = process.env.DB_NAME;
 // Conexion with database
 // Pool and sequelize (ORM)
 const sequelize = new Sequelize(DB_NAME, DB_USER, DB_PASSWORD, {
-  host: 'localhost',
-  dialect: 'postgres',
+  host: 'bcnhpdc5bjwbap6vfnhr-mysql.services.clever-cloud.com',
+  dialect: 'mysql',
   logging: true,
 });
 setupModels(sequelize);
