@@ -46,6 +46,13 @@ To run the project you can execute the following command
 npm run dev
 ```
 
+
+To test the routes of this backend, you must authorize yourself with the secret key, you put this in the "Authorization" section, and the type of authorization is JWT Bearer.
+Put the following key
+```bash
+secret = rOk9ZPWMvf8ViHO9gY3qgM5lcNhuKmp3
+```
+
 ## License
 
 [MIT](https://choosealicense.com/licenses/mit/)
