@@ -1,18 +1,18 @@
 import { UserSchema, User } from "./user.model.js";
 import {
-  HourConsumptionSchema,
-  HourConsumption,
-} from "./hourConsumption.model.js";
+  ConsumptionSchema,
+  Consumption,
+} from "./Consumption.model.js";
 
 
 // Se ejecutan todas las relaciones y se inicializa cada esquema
 export function setupModels(sequelize) {
   User.init(UserSchema, User.config(sequelize));
-  HourConsumption.init(
-    HourConsumptionSchema,
-    HourConsumption.config(sequelize)
+  Consumption.init(
+    ConsumptionSchema,
+    Consumption.config(sequelize)
   );
 
   User.associate(sequelize.models);
-  HourConsumption.associate(sequelize.models);
+  Consumption.associate(sequelize.models);
 }

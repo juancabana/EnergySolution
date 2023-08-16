@@ -68,9 +68,9 @@ export class User extends Model {
   // Relaciones
   static associate(models) {
     // User has many dayli consumption model
-    // ForeignKey in HourConsumption
-    this.hasMany(models.HourConsumption, {
-      as: "HourConsumption",
+    // ForeignKey in Consumption
+    this.hasMany(models.Consumption, {
+      as: "Consumption",
       foreignKey: "UserId",
     });
   }

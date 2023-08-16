@@ -1,12 +1,12 @@
 import expres from "express";
-import HourConsumption from "./../services/hourConsumption.service.js";
+import Consumption from "./../services/Consumption.service.js";
 import User from "../services/user.service.js";
 import validatorHandler from "../middlewares/validator.handler.js";
 import { createConsumption } from "../schemas/consumption.schema.js";
 import passport from "passport";
 
 const router = expres.Router();
-const service = new HourConsumption();
+const service = new Consumption();
 const userService = new User();
 
 // POST
@@ -23,8 +23,8 @@ router.post(
     try {
       const user = await userService.findOne(id);
       if (user) {
-        const newHourConsumption = await service.create(consumptionData);
-        res.json(newHourConsumption);
+        const newConsumption = await service.create(consumptionData);
+        res.json(newConsumption);
       }
     } catch (err) {
       next(err);

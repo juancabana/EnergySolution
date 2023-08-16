@@ -1,12 +1,16 @@
 import { Model, DataTypes } from "sequelize";
 
-export const HOUR_TABLE = "HourConsumption";
+export const CONSUMPTION_TABLE = "Consumption";
 
-export const HourConsumptionSchema = {
+export const ConsumptionSchema = {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
     autoIncrement: true,
+  },
+  type: {
+    type: DataTypes.STRING,
+    allowNull: false,
   },
   date: {
     type: DataTypes.DATE,
@@ -22,10 +26,10 @@ export const HourConsumptionSchema = {
   },
 };
 
-export class HourConsumption extends Model {
+export class Consumption extends Model {
   // Relaciones
   static associate(models) {
-    // HourConsumption has belogs to one User
+    // Consumption has belogs to one User
     // ForeignKey here
     this.belongsTo(models.User, {
       as: "owner",
@@ -36,8 +40,8 @@ export class HourConsumption extends Model {
   static config(sequelize) {
     return {
       sequelize,
-      tableName: HOUR_TABLE,
-      modelName: "HourConsumption",
+      tableName: CONSUMPTION_TABLE,
+      modelName: "Consumption",
       timestamps: false,
     };
   }

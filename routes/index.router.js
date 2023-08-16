@@ -1,7 +1,7 @@
 import expres from "express";
 import userRouter from "./user.router.js";
 import authRouter from "./auth.router.js";
-import hourConsumptionRouter from "./hourConsumption.router.js";
+import ConsumptionRouter from "./Consumption.router.js";
 
 const router = expres.Router();
 
@@ -60,6 +60,6 @@ router.use("/auth/", authRouter);
  *         appliances: 7
  */
 router.use("/user/", userRouter);
-router.use("/hour-consumption/", hourConsumptionRouter);
+router.use("/consumption/", ConsumptionRouter);
 
 export default router;

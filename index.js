@@ -9,7 +9,6 @@ import {
 } from "./middlewares/error.handler.js";
 // Router
 import router from "./routes/index.router.js";
-import path from "path";
 // Swagger
 import swagerUI from "swagger-ui-express";
 import swaggerJsdoc from "swagger-jsdoc";
@@ -42,7 +41,8 @@ const options = {
 };
 const specs = swaggerJsdoc(options);
 
-// dailyScheduledTasks();
+// Here the tasks scheduled with node-cron are executed
+dailyScheduledTasks();
 
 app.use(express.json()); // for parsing application/json
 app.use(express.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
@@ -61,7 +61,6 @@ app.use("/", router);
 app.use(logErrors);
 app.use(boomErrorHandler);
 app.use(errorHandler);
-
 app.use(
   "/api-doc",
   swagerUI.serve,
